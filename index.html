@@ -26,7 +26,20 @@
         /**
          * Sorunun cevabını bu yorumdan sonra yazınız.
          */
-
+        var hesaplaBtn = document.getElementById("hesapla");
+        hesaplaBtn.onclick = function () {
+            var cevapYazdirmaAlani = document.getElementById("cevap-1");
+            var girilenRakam = document.getElementById("rakam").value;// kullanıcının girdiği rakamı girilenRakam değişkenine atıyoruz
+            cevapYazdirmaAlani.innerHTML = (""); // Her hesapla butonuna basıldığında cevap alanını temizliyoruz.
+            if (girilenRakam > 1 && girilenRakam < 10) {// rakam 1 ile 9 arasındaki sayılara denir. Bu yüzden kullancının girdiği değerin bu aralıkta olduğunu kontrol ediyoruz.
+                //Rakam doğru aralıkta girilmiş artık çarpım tablosunu oluşturabiliriz.
+                for (var i = 1; i <= 10; i++) {
+                    cevapYazdirmaAlani.innerHTML += girilenRakam + " * " + i + " = " + girilenRakam * i + "<br>";
+                }
+            } else {
+                cevapYazdirmaAlani.innerHTML = "Lütfen bir rakam giriniz.";
+            }
+        };
 
     </script>
     <div class="clearfix"></div>
@@ -44,7 +57,18 @@
         /**
          * Sorunun cevabını bu yorumdan sonra yazınız.
          */
+        var cevapYazdirmaAlani = document.getElementById("cevap-2");
+        cevapYazdirmaAlani.innerHTML = ("<br>"); // Her hesapla butonuna basıldığında cevap alanını temizliyoruz.
+        for (var i = 1; i <= 10; i++) { // 1 den 10 a kadar tüm sayıları yazdıracağımız için 1 den 10 a eşit olana kadar birer birer artacak bir döngü oluşturduk
 
+            var out = "<div style='float:left;border:1px solid; margin:3px;padding: 3px;'>"; // her bir rakam için bir kutu oluşturmak için html etiketi açık
+            for (var j = 1; j <= 10; j++) {// ilk döngüdeki rakamı 1 den 10 a kadar tüm rakamlar ile çarpmak için döngü oluşturduk
+                out += (i + " * " + j + " = " + i * j + "<br>");// daha önce oluşturduğumuz out değişkenine çarpma işlaminin bir satırını ekliyoruz.
+            }
+
+            out += '</div>'; // tek bir rakam için bütün işlemleri out değişkenine yazdırdıktan sonra oluşturduğumuz html etiketini kapatıyoruz.
+            cevapYazdirmaAlani.innerHTML += out; // oluşturduğumuz kutuyu cevp yazdırma alanına yazdırıyoruz.
+        }
     </script>
     <div class="clearfix"></div>
 </div>
